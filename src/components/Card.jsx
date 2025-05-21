@@ -2,7 +2,6 @@ import { Link } from "react-router-dom"
 
 
 function Card({book}){
-    console.log(book)
     return(
 <Link to={`/single-page/${book.id}`}>
     <div className="flex px-3 py-3">

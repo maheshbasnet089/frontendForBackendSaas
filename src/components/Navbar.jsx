@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom"
 
 
 function Navbar(){
+  
+
     return(
         <header className="bg-white">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
@@ -21,9 +24,9 @@ function Navbar(){
               </nav>
               <div className="flex items-center gap-4">
                 <div className="sm:flex sm:gap-4">
-                  <a className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow" href="#">
+                  <Link className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow" to="/create-page">
                     + Create
-                  </a>
+                  </Link>
              
                 </div>
                 <div className="block md:hidden">
