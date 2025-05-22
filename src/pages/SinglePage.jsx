@@ -3,6 +3,7 @@ import {  useNavigate, useParams } from "react-router-dom"
 import Navbar from "../components/Navbar"
 import axios from "axios"
 import { useEffect, useState } from "react"
+import Button from "../components/Button"
 
 
 function SinglePage(){
@@ -33,7 +34,8 @@ function SinglePage(){
         <h1>{book.bookName}</h1>
         <p>{book.price}</p>
         <p>{book.bookAuthor}</p>
-        <button onClick={deleteBook}>Delete Me</button>
+        {/* <button onClick={deleteBook}>Delete Me</button> */}
+        <Button deleteFunctionHo={deleteBook} />
         </>
     )
 }

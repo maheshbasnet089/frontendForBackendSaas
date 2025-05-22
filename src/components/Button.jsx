@@ -1,9 +1,9 @@
 
 
-function Button({title}){
+function Button({title,deleteFunctionHo}){
   
     return(
-        <button className="bg-green-400">{title}</button>
+        <button onClick={deleteFunctionHo}  className="bg-green-400">{title}</button>
     )
 }
 
