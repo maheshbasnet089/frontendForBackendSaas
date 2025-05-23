@@ -61,7 +61,7 @@ function CreatePage(){
     </button>
   </div>
   <div className="p-6 space-y-6">
-    <form onSubmit={submitData}>
+    <form>
       <div className="grid grid-cols-6 gap-6">
         <div className="col-span-6 sm:col-span-3"> 
           <label htmlFor="product-name" className="text-sm font-medium text-gray-900 block mb-2">Book Name</label>
