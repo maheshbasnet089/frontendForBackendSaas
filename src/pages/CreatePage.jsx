@@ -1,8 +1,12 @@
 import { useState } from "react"
 import Navbar from "../components/Navbar"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
+
 
 
 function CreatePage(){
+  const navigate = useNavigate()
     // first approach 
     // const [bookName,setBookname] = useState("")
     // const [bookGenre,setBookgenre] = useState("")
@@ -30,7 +34,20 @@ function CreatePage(){
         })
     }
 
-    console.log(bookData)
+    const submitData = async (event)=>{
+      event.preventDefault()
+      // mathi state ma vako data lai api lai dine -- localhost:4000/api/books - post method 
+      // post garda dueta pathaunai paryo , pathaune data ko format always object hunu parxa, jun at the end axios le json ma convert garera pathaedinxa 
+      const response = await axios.post("http://localhost:4000/api/books",bookData)
+      if(response.status === 200){
+        alert("Book added successfully")
+        navigate("/")
+      }else{
+        alert("Something went wrong")
+      }
+
+    }
+
     return (
         <>
        <Navbar />
@@ -44,7 +61,7 @@ function CreatePage(){
     </button>
   </div>
   <div className="p-6 space-y-6">
-    <form action="#">
+    <form onSubmit={submitData}>
       <div className="grid grid-cols-6 gap-6">
         <div className="col-span-6 sm:col-span-3"> 
           <label htmlFor="product-name" className="text-sm font-medium text-gray-900 block mb-2">Book Name</label>
@@ -63,11 +80,12 @@ function CreatePage(){
           <input onChange={handleChange} type="number" name="bookPrice" id="price" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="$2300" required />
         </div>
       </div>
+      <div className="p-6 border-t border-gray-200 rounded-b">
+    <button className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit" >Save all</button>
+  </div>
     </form>
   </div>
-  <div className="p-6 border-t border-gray-200 rounded-b">
-    <button className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">Save all</button>
-  </div>
+ 
 </div>
 
         </>
